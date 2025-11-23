@@ -1,0 +1,5 @@
+#NOTE: This is a Maven Resolver internal implementation file, its format can be changed without prior notice.
+#Fri Oct 17 13:33:49 CST 2025
+javafx-graphics-17.0.14.jar>central=
+javafx-graphics-17.0.14.pom>central=
+javafx-graphics-17.0.14-win.jar>central=
