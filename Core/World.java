@@ -3,11 +3,13 @@ package Core;
 import TileEngine.TETile;
 import TileEngine.Tileset;
 
+import java.io.Serializable;
+import java.io.*;
 /**
  * 世界/地图的统一访问入口
  * 所有对tiles的读写必须经由此类
  */
-public class World {
+public class World implements Serializable {
     private final TETile[][] tiles;
     private final int width;
     private final int height;

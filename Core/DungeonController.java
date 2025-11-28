@@ -3,6 +3,7 @@ package Core;
 import TileEngine.TERenderer;
 import TileEngine.Tileset;
 
+import java.io.File;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -21,6 +22,7 @@ public class DungeonController {
     private final List<Room> rooms = new ArrayList<>();
     private TreasureRoom treasureRoom;
     private DeadEndKiller endKiller;
+
 
     public DungeonController(DungeonConfig config) {
         this.config = config;
@@ -63,6 +65,10 @@ public class DungeonController {
             for (int y = 1; y < world.getHeight(); y += 2) {
                 Position start = new Position(x, y);
                 mazeGenerator.carveMaze(start);
+
+                // debug
+                String fileName = start.toString();
+                WorldIO.saveWorld(world, fileName);
             }
         }
     }
@@ -80,6 +86,7 @@ public class DungeonController {
         generateMaze();
 
         floodGenerator.floodConnect(new Position(1, 1));
+        endKiller.fillDeadEnds();
         endKiller.killDeadEnds();
         render();
 
@@ -97,7 +104,7 @@ public class DungeonController {
         DungeonConfig config = new DungeonConfig.Builder()
                 .seed(13256)
                 .maxRoomSize(21, 21)
-                .windowWidth(87)
+                .windowWidth(61)
                 .build();
 
         DungeonController controller = new DungeonController(config);

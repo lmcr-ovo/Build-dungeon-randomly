@@ -57,7 +57,7 @@ public class FloodGenerator {
      */
     public List<Position> flood(Position source) {
         initial();
-        return floodHelper(source).getAllWalls();
+        return floodWall(source).getAllWalls();
     }
 
     /**
@@ -65,8 +65,7 @@ public class FloodGenerator {
      * @param source
      * @return
      */
-    private FloodWalls floodHelper(Position source) {
-        Set<Position> walls = new HashSet<>();
+    private FloodWalls floodWall(Position source) {
         Deque<Position> waters = new LinkedList<>();
         markWater(source);
         waters.add(source);
@@ -118,7 +117,7 @@ public class FloodGenerator {
 
 
     private void floodConnectHepler(Position source) {
-        List<Position> floodWall = floodHelper(source).getNotCornerWall();
+        List<Position> floodWall = floodWall(source).getNotCornerWall();
 
         while (true) {
             List<Position> dams = findDam(floodWall);

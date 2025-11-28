@@ -49,10 +49,8 @@ public class RoomFac {
         int maxY = worldHeight - 1;
 
         int anchorX = random.nextInt((maxX - minX + 1) / 2) * 2 + minX;
-        //if (anchorX % 2 != 0) anchorX++;
 
         int anchorY = random.nextInt((maxY - minY + 2) / 2) * 2 + minY;
-        //if (anchorY % 2 != 0) anchorY++;
 
         return new Room(new Position(anchorX, anchorY), width, height);
     }

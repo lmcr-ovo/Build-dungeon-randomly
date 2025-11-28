@@ -1,6 +1,5 @@
 package Core;
 
-import TileEngine.TETile;
 import TileEngine.Tileset;
 
 import java.util.*;
@@ -53,7 +52,7 @@ public class DeadEndKiller {
         }
     }
 
-    private void fillDeadEnds() {
+    public void fillDeadEnds() {
         for (Position endPos : findDeadEnds()) {
             killEnd(endPos);
         }
@@ -73,7 +72,6 @@ public class DeadEndKiller {
     }
 
     public void killDeadEnds() {
-        fillDeadEnds();
         Set<Position> allWalls = getAllWalls();
         List<Position> reachableWalls = floodGenerator.flood(treasurePos);
         for (Position wallPos : allWalls) {
